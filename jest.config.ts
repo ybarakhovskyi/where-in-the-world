@@ -10,7 +10,6 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: 'v8',
-  testEnvironment: "jsdom",
   coverageThreshold: {
     global: {
       lines: 80,
@@ -18,7 +17,8 @@ const config: Config = {
       functions: 80,
       statements: 80
     }
-  }
+  },
+  testEnvironment: "jsdom",
 };
 
 export default createJestConfig(config);
