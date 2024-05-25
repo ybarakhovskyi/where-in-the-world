@@ -9,6 +9,7 @@ const globalStyles = css`
 
   html,
   body {
+    color: ${({ theme }) => theme.colors.typography.common};
     margin: 0;
     padding: 0;
     max-height: 100vh;

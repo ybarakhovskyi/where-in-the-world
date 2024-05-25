@@ -1,9 +1,14 @@
+// Vendors
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry';
-import GlobalStyles from '@/global/GlobalStyles';
-import { ThemeProvider } from '@/global/themes/ThemeProvider';
+
+// Components
+import { Header } from '../components/Header';
+import { StylesProvider } from '@/global/providers/StylesProvider';
+
+// Styles
+import { StyledLayout, StyledLayoutContent } from '@/app/styled';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,11 +21,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyledComponentsRegistry>
-          <GlobalStyles />
+        <StylesProvider>
+          <StyledLayout>
+            <Header />
 
-          <ThemeProvider>{children}</ThemeProvider>
-        </StyledComponentsRegistry>
+            <StyledLayoutContent>{children}</StyledLayoutContent>
+          </StyledLayout>
+        </StylesProvider>
       </body>
     </html>
   );

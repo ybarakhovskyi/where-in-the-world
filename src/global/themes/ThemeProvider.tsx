@@ -7,11 +7,12 @@ import { ThemeVariant } from './types';
 
 type ThemeContext = {
   theme: ThemeVariant;
-  setTheme?: (theme: ThemeVariant) => void;
+  setTheme: (theme: ThemeVariant) => void;
 };
 
 export const ThemeTypeContext = createContext<ThemeContext>({
   theme: ThemeVariant.DARK,
+  setTheme: (theme: ThemeVariant) => undefined,
 });
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
