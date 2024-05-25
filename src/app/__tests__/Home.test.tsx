@@ -8,19 +8,9 @@ describe('Home', () => {
     // Act
     render(<Home />);
 
-    const heading = screen.getByRole('heading', { level: 1 });
+    const heading = screen.getByRole('heading', { level: 1, name: MAIN_PAGE_TITLE });
 
     // Assert
     expect(heading).toBeInTheDocument();
-  });
-
-  it('should render proper heading text', () => {
-    // Act
-    render(<Home />);
-
-    const headingContent = screen.queryByText(MAIN_PAGE_TITLE);
-
-    // Assert
-    expect(headingContent).toBeInTheDocument();
   });
 });
