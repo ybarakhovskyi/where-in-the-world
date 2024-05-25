@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
 import React, { FC, PropsWithChildren, useState } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 
-const StyledComponentsRegistry: FC<PropsWithChildren> = ({ children, }) => {
+const StyledComponentsRegistry: FC<PropsWithChildren> = ({ children }) => {
   const [styleSheet] = useState(() => new ServerStyleSheet());
 
   useServerInsertedHTML(() => {
@@ -12,7 +12,7 @@ const StyledComponentsRegistry: FC<PropsWithChildren> = ({ children, }) => {
 
     styleSheet.instance.clearTag();
 
-    return <>{styles}</>
+    return <>{styles}</>;
   });
 
   if (typeof window !== 'undefined') return <>{children}</>;
@@ -21,7 +21,7 @@ const StyledComponentsRegistry: FC<PropsWithChildren> = ({ children, }) => {
     <StyleSheetManager sheet={styleSheet.instance}>
       {children}
     </StyleSheetManager>
-  )
+  );
 };
 
 export default StyledComponentsRegistry;

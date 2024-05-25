@@ -1,14 +1,14 @@
 'use client';
 
 import { createContext, FC, PropsWithChildren, useMemo, useState } from 'react';
-import {ThemeProvider as StyledThemeProvider} from 'styled-components';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import themes from './';
 import { ThemeVariant } from './types';
 
 type ThemeContext = {
   theme: ThemeVariant;
   setTheme?: (theme: ThemeVariant) => void;
-}
+};
 
 export const ThemeTypeContext = createContext<ThemeContext>({
   theme: ThemeVariant.DARK,
@@ -16,10 +16,13 @@ export const ThemeTypeContext = createContext<ThemeContext>({
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeVariant>(ThemeVariant.DARK);
-  const themeContextValue = useMemo(():ThemeContext => ({
-    theme,
-    setTheme
-  }), [theme]);
+  const themeContextValue = useMemo(
+    (): ThemeContext => ({
+      theme,
+      setTheme,
+    }),
+    [theme],
+  );
 
   return (
     <ThemeTypeContext.Provider value={themeContextValue}>
@@ -27,5 +30,5 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
         {children}
       </StyledThemeProvider>
     </ThemeTypeContext.Provider>
-  )
+  );
 };
