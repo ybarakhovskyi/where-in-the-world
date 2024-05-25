@@ -1,7 +1,9 @@
+import { PropsWithChildren } from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry';
 import GlobalStyles from '@/global/GlobalStyles';
+import { ThemeProvider } from '@/global/themes/ThemeProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,15 +14,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          {children}
+
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
