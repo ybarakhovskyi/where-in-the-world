@@ -6,11 +6,14 @@ import {
   StyledHeaderWrapper,
   StyledLogo,
 } from '@/components/Header/styled';
+import { ThemeSwitchButton } from '@/components/Header/ThemeSwitchButton';
 
 export const Header: FC = () => (
   <StyledHeaderWrapper>
     <StyledHeader>
       <StyledLogo>Where in the world?</StyledLogo>
+
+      <ThemeSwitchButton />
     </StyledHeader>
   </StyledHeaderWrapper>
 );
