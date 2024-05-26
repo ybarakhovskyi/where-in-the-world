@@ -13,6 +13,6 @@ export enum ButtonVariant {
 export type ButtonProps = {
   size?: ButtonSize;
   variant?: ButtonVariant;
-  icon?: ReactNode;
+  icon?: ReactNode | null;
   label: string;
 };

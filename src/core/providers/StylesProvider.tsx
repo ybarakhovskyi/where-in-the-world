@@ -5,8 +5,8 @@ import { FC, PropsWithChildren } from 'react';
 
 // Components
 import StyledComponentsRegistry from '@/lib/StyledComponentsRegistry';
-import { ThemeProvider } from '@/global/themes/ThemeProvider';
-import GlobalStyles from '@/global/GlobalStyles';
+import { ThemeProvider } from '@/core/themes/ThemeProvider';
+import GlobalStyles from '@/core/GlobalStyles';
 
 export const StylesProvider: FC<PropsWithChildren> = ({ children }) => (
   <StyledComponentsRegistry>

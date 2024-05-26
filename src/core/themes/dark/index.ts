@@ -8,7 +8,8 @@ import {
   Colors,
   typography,
   TypographyColors,
-} from '@/global/themes/default/colors';
+} from '@/core/themes/default/colors';
+import { components } from '@/core/themes/dark/components';
 
 const typographyColors: TypographyColors = {
   ...typography,
@@ -23,4 +24,5 @@ const colors: Colors = {
 export const DarkTheme: DefaultTheme = {
   ...theme,
   colors,
+  components,
 };

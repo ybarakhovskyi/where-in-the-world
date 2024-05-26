@@ -6,7 +6,7 @@ import {
   ButtonVariant,
 } from '@/common/components/Button/types';
 
-const getButtonSize = (theme: DefaultTheme, size?: ButtonSize) => {
+const getButtonOffsets = (theme: DefaultTheme, size?: ButtonSize) => {
   const { button } = theme.components;
 
   switch (size) {
@@ -32,16 +32,18 @@ const getButtonElevation = (theme: DefaultTheme, variant?: ButtonVariant) => {
   }
 };
 
-export const StyledButton = styled.button<Omit<ButtonProps, 'label'>>`
-  border: ${({ theme, size }) => theme.components.button.border};
-  color: ${({ theme }) => theme.components.button.color};
-  border-radius: ${({ theme }) => theme.components.button.borderRadius};
+export const StyledButton = styled.button<Omit<ButtonProps, 'label' | 'icon'>>`
+  align-items: center;
   background-color: ${({ theme }) => theme.components.button.backgroundColor};
+  border-radius: ${({ theme }) => theme.components.button.borderRadius};
+  border: ${({ theme }) => theme.components.button.border};
   box-shadow: ${({ theme, variant }) => getButtonElevation(theme, variant)};
-  padding: ${({ theme, size }) => getButtonSize(theme, size)};
-  line-height: 1;
-  transition: 0.3s ease-in-out;
+  color: ${({ theme }) => theme.components.button.color};
   cursor: pointer;
+  display: flex;
+  line-height: 1;
+  padding: ${({ theme, size }) => getButtonOffsets(theme, size)};
+  transition: 0.3s ease-in-out;
 
   &:hover {
     background-color: ${({ theme }) =>
