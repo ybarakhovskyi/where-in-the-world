@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
-import { MAIN_PAGE_TITLE } from '@/global/consts';
+import { MAIN_PAGE_TITLE } from '@/core/consts';
 
 describe('Home', () => {
   it('should render a heading', () => {

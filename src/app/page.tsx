@@ -1,4 +1,4 @@
-import { MAIN_PAGE_TITLE } from '@/global/consts';
+import { MAIN_PAGE_TITLE } from '@/core/consts';
 
 export default function Home() {
   return (

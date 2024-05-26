@@ -1,6 +1,6 @@
 import { LightTheme } from './light';
 import { DarkTheme } from './dark';
-import { ThemeVariant } from '@/global/themes/types';
+import { ThemeVariant } from '@/core/themes/types';
 
 const themes = {
   [ThemeVariant.DARK]: DarkTheme,

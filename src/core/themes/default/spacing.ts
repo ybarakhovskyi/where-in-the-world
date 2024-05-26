@@ -19,3 +19,5 @@ export const spacing = {
   x11: offsetSize(11),
   x12: offsetSize(12),
 };
+
+export type Spacing = keyof typeof spacing;

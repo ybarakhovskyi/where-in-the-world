@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 // Components
-import { Header } from '../components/Header';
-import { StylesProvider } from '@/global/providers/StylesProvider';
+import { Header } from '@/components/Header';
+import { StylesProvider } from '@/core/providers/StylesProvider';
 
 // Styles
 import { StyledLayout, StyledLayoutContent } from '@/app/styled';
