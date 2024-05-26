@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 import {
   ButtonProps,
   ButtonSize,
@@ -10,12 +10,14 @@ export const Button: FC<
   ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
 > = ({
   size = ButtonSize.LARGE,
-  icon = null,
+  icon,
   variant = ButtonVariant.PRIMARY,
   label,
-  ...initialProps
+  ...props
 }) => (
-  <StyledButton size={size} variant={variant} icon={icon} {...initialProps}>
+  <StyledButton size={size} variant={variant} {...props}>
+    {icon}
+
     {label}
   </StyledButton>
 );
