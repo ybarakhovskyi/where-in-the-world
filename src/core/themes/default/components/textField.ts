@@ -10,7 +10,7 @@ export const textField = {
   borderRadius: borderRadius.x2,
   elevation: elevation.M,
   offset: {
-    M: `${spacing.x2} ${spacing.x8}`,
+    M: `${spacing.x2} ${spacing.x6}`,
   },
 };
 
