@@ -13,6 +13,7 @@ const globalStyles = css`
     margin: 0;
     padding: 0;
     max-height: 100vh;
+    font-size: 14px;
   }
 `;
 
