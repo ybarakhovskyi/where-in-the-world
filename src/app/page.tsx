@@ -1,10 +1,19 @@
-import { MAIN_PAGE_TITLE } from '@/core/consts';
 import { HomeLayout } from '@/components/pages/home';
+import { CountryList } from '@/components/pages/home/CountryList';
+import { Country } from '@/types/country';
+import { getAllCountries } from '@/core/api/restCountriesApi';
 
-export default function Home() {
+export default async function Home() {
+  let countries: Country[] = [];
+
+  try {
+    const response = await getAllCountries();
+    countries = await response.json();
+  } catch (e) {}
+
   return (
     <HomeLayout>
-      <h1>{MAIN_PAGE_TITLE}</h1>
+      <CountryList countries={countries} />
     </HomeLayout>
   );
 }
