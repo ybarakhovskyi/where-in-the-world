@@ -20,8 +20,6 @@ export const CountryList: FC<CountryList> = ({ countries }) => {
     );
   }
 
-  console.log('Ybarakhovskyi DEBUG:', countries);
-
   return (
     <StyledCountryList>
       {countries.map((country) => (
