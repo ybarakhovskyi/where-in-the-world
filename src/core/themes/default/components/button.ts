@@ -10,7 +10,7 @@ export const button = {
   border: 'none',
   offset: {
     L: `${spacing.x4} ${spacing.x12}`,
-    S: `${spacing.x1} ${spacing.x4}`,
+    S: `${spacing.x2} ${spacing.x8}`,
     XS: `${spacing.x1} ${spacing.x2}`,
   },
   elevation: {

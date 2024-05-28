@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
 export const StyledHeaderWrapper = styled.div`
   display: flex;
@@ -16,7 +17,9 @@ export const StyledHeader = styled.header`
   width: 100%;
 `;
 
-export const StyledLogo = styled.h1`
-  font-weight: 600;
+export const StyledLogo = styled(Link)`
+  color: ${({ theme }) => theme.colors.typography.common};
+  text-decoration: none;
+  font-weight: 700;
   ${({ theme }) => theme.typography.headings.h1}
 `;

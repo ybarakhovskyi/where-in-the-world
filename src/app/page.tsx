@@ -1,10 +1,34 @@
-import { MAIN_PAGE_TITLE } from '@/core/consts';
-import { HomeLayout } from '@/components/pages/home';
+// Modules
+import { getAllCountries } from '@/core/api/restCountriesApi';
+import { countriesMock } from '@/core/dataMocks';
 
-export default function Home() {
+// Components
+import { HomeLayout } from '@/components/pages/home';
+import { CountryList } from '@/components/pages/home/CountryList';
+
+// Types
+import { Country } from '@/types/country';
+
+export default async function Home() {
+  let countries: Country[];
+
+  try {
+    countries = await getAllCountries([
+      'flags',
+      'name',
+      'population',
+      'region',
+      'capital',
+      'cca3',
+      'ccn3',
+    ]);
+  } catch (error) {
+    countries = countriesMock;
+  }
+
   return (
     <HomeLayout>
-      <h1>{MAIN_PAGE_TITLE}</h1>
+      <CountryList countries={countries} />
     </HomeLayout>
   );
 }
