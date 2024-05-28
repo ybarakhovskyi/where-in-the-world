@@ -14,6 +14,12 @@ const globalStyles = css`
     padding: 0;
     max-height: 100vh;
     font-size: 14px;
+    font-weight: 100;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 `;
 

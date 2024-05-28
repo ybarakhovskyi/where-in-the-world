@@ -4,7 +4,7 @@ const BASE_API_ENDPOINT = 'https://restcountries.com/v3.1';
 
 enum SearchEndpoint {
   NAME = 'name',
-  CODE = 'code',
+  CODE = 'alpha',
   ALL = 'all',
 }
 
@@ -24,7 +24,7 @@ const expectedFields: CountryField[] = [
 ];
 
 const api = {
-  get: (endpoint: string) => fetch(endpoint),
+  get: (endpoint: string) => fetch(endpoint, { cache: 'force-cache' }),
 };
 
 const createRequestUrl = ({
@@ -32,7 +32,7 @@ const createRequestUrl = ({
   searchValue,
   filterFields,
 }: {
-  searchEndpoint: SearchEndpoint;
+  searchEndpoint: SearchEndpoint | string;
   searchValue?: string;
   filterFields?: CountryField[];
 }): string => {
@@ -40,23 +40,32 @@ const createRequestUrl = ({
   const urlWithSearchValue = searchValue
     ? `${urlWithSearchEndpoint}/${searchValue}`
     : urlWithSearchEndpoint;
+  const alreadyHaveQuery = urlWithSearchValue.includes('?');
   const filteredFields = filterFields || expectedFields;
 
-  return `${urlWithSearchValue}?fields=${filteredFields.join(',')}`;
+  const finalquery = `${urlWithSearchValue}${alreadyHaveQuery ? '&' : '?'}fields=${filteredFields.join(',')}`;
+
+  console.log('Ybarakhovskyi DEBUG:', finalquery);
+
+  return finalquery;
 };
 
-export const getAllCountries = () =>
-  api.get(
+export const getAllCountries = async (filterFields?: CountryField[]) => {
+  const response = await api.get(
     createRequestUrl({
       searchEndpoint: SearchEndpoint.ALL,
+      filterFields,
     }),
   );
 
-export const getCountryByName = (
+  return await response.json();
+};
+
+export const getCountryByName = async (
   countryName: string,
   filterFields?: CountryField[],
-) =>
-  api.get(
+) => {
+  const response = await api.get(
     createRequestUrl({
       searchEndpoint: SearchEndpoint.NAME,
       searchValue: countryName,
@@ -64,14 +73,19 @@ export const getCountryByName = (
     }),
   );
 
-export const getCountryByCode = (
-  countryCode: string,
+  return await response.json();
+};
+
+export const getCountriesByCode = async (
+  countryCodes: string,
   filterFields?: CountryField[],
-) =>
-  api.get(
+) => {
+  const response = await api.get(
     createRequestUrl({
-      searchEndpoint: SearchEndpoint.CODE,
-      searchValue: countryCode,
+      searchEndpoint: `${SearchEndpoint.CODE}?codes=${countryCodes}`,
       filterFields,
     }),
   );
+
+  return response.json();
+};

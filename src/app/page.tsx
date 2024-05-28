@@ -1,15 +1,30 @@
+// Modules
+import { getAllCountries } from '@/core/api/restCountriesApi';
+import { countriesMock } from '@/core/dataMocks';
+
+// Components
 import { HomeLayout } from '@/components/pages/home';
 import { CountryList } from '@/components/pages/home/CountryList';
+
+// Types
 import { Country } from '@/types/country';
-import { getAllCountries } from '@/core/api/restCountriesApi';
 
 export default async function Home() {
-  let countries: Country[] = [];
+  let countries: Country[];
 
   try {
-    const response = await getAllCountries();
-    countries = await response.json();
-  } catch (e) {}
+    countries = await getAllCountries([
+      'flags',
+      'name',
+      'population',
+      'region',
+      'capital',
+      'cca3',
+      'ccn3',
+    ]);
+  } catch (error) {
+    countries = countriesMock;
+  }
 
   return (
     <HomeLayout>

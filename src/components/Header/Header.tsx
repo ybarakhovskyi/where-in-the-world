@@ -11,7 +11,7 @@ import { ThemeSwitchButton } from '@/components/Header/ThemeSwitchButton';
 export const Header: FC = () => (
   <StyledHeaderWrapper>
     <StyledHeader>
-      <StyledLogo>Where in the world?</StyledLogo>
+      <StyledLogo href="/">Where in the world?</StyledLogo>
 
       <ThemeSwitchButton />
     </StyledHeader>
