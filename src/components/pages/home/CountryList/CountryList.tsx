@@ -18,9 +18,9 @@ export const CountryList: FC = () => {
 
   return (
     <StyledCountryList>
-      {countries.map((country) => (
+      {countries.map((country, index) => (
         <CountryListItem
-          key={`${country.cca3}_${country.ccn3}`}
+          key={`${country.cca3}_${country.ccn3}_${index}`}
           country={country}
         />
       ))}

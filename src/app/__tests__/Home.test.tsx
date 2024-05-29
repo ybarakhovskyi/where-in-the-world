@@ -1,16 +1,17 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import Home from '@/app/page';
 import { MAIN_PAGE_TITLE } from '@/core/consts';
+import { renderWithTheme } from '@/testUtils/renderWithTheme';
 
 describe('Home', () => {
-  it('should render a heading', () => {
+  it('should render a heading', async () => {
     // Act
-    render(<Home />);
+    const ComponentResult = await Home();
+    renderWithTheme(ComponentResult);
 
-    const heading = screen.getByRole('heading', {
-      level: 1,
-      name: MAIN_PAGE_TITLE,
+    const heading = screen.getByRole('button', {
+      name: 'Filter by region',
     });
 
     // Assert
