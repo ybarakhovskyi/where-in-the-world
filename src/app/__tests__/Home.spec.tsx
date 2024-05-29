@@ -30,7 +30,7 @@ describe('Home', () => {
   });
 
   describe('RegionFilter', () => {
-    it('should render region filter button', async () => {
+    it('should render region filter', async () => {
       // Act
       const ComponentResult = await Home();
       renderWithTheme(ComponentResult);
