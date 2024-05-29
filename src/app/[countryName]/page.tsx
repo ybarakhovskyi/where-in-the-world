@@ -12,7 +12,6 @@ import { CountryInfoLayout } from '@/components/pages/country';
 import { Country } from '@/types/country';
 import { fetchBorderCountries } from '@/app/actions/fetchBorderCountries';
 import { countryMock } from '@/core/dataMocks';
-import { borderCountriesMock } from '@/core/dataMocks/borderCountriesMock';
 
 type CompanyPageParams = {
   params: {
@@ -35,7 +34,7 @@ export default async function CountryPage({ params }: CompanyPageParams) {
       borderCountries = await fetchBorderCountries(country.borders);
     }
   } catch (e) {
-    borderCountries = borderCountriesMock.map((country) => country.name.common);
+    borderCountries = await fetchBorderCountries(countryMock.borders);
   }
 
   return (

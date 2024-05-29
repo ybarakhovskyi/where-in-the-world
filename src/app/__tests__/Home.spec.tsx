@@ -55,12 +55,13 @@ describe('Home', () => {
     });
 
     it('should render explanatory message when there is no countries in list', async () => {
-      // Act
+      // Arrange
       const fetchCountriesMock = jest.spyOn(
         fetchCountriesAction,
         'fetchCountries',
       );
 
+      // Act
       fetchCountriesMock.mockImplementationOnce(() => Promise.resolve([]));
 
       const ComponentResult = await Home();
