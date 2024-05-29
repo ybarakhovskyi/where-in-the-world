@@ -1,4 +1,5 @@
 import { Country } from '@/types/country';
+import { formatPopulationValue } from '@/core/utils/formatPopulationValue';
 
 export const getCountryDetails = (country: Country): [string, string][] => {
   const { name, currencies, languages } = country;
@@ -27,7 +28,7 @@ export const getCountryDetails = (country: Country): [string, string][] => {
     ['Region', country.region],
     ['Capital', country.capital.join(', ')],
     ['Currencies', currenciesAsString],
-    ['Population', country.population.toString()],
+    ['Population', formatPopulationValue(country.population)],
     ['Sub Region', country.subregion],
     ['Top Level Domain', country.tld.join(', ')],
     ['Languages', languagesAsString],

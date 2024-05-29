@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "color": "^4.2.3",
+    "lodash.debounce": "^4.0.8",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",

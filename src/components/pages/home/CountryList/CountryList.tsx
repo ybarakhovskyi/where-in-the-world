@@ -1,19 +1,15 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { CountryListItem } from '@/components/pages/home/CountryList/CountryListItem';
-
-// Types
-import { Country } from '@/types/country';
 
 // Styles
 import { StyledCountryList } from '@/components/pages/home/CountryList/styled';
+import { SearchAndFilterContext } from '@/components/pages/home/providers/searchContext';
 
-type CountryList = {
-  countries: Country[];
-};
+export const CountryList: FC = () => {
+  const { countries } = useContext(SearchAndFilterContext);
 
-export const CountryList: FC<CountryList> = ({ countries }) => {
   if (!countries.length) {
     return (
       <h1>No countries found or something went wrong while fetching them.</h1>

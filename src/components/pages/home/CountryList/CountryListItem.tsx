@@ -12,6 +12,7 @@ import {
   StyledCountryLink,
   StyledCountryListItem,
 } from './styled';
+import { formatPopulationValue } from '@/core/utils/formatPopulationValue';
 
 type CountryListItemProps = {
   country: Country;
@@ -34,7 +35,8 @@ export const CountryListItem: FC<CountryListItemProps> = ({ country }) => {
 
           <StyledCountryDescription>
             <li>
-              <strong>Population:</strong> <span>{country.population}</span>
+              <strong>Population:</strong>{' '}
+              <span>{formatPopulationValue(country.population)}</span>
             </li>
             <li>
               <strong>Region:</strong> <span>{country.region}</span>

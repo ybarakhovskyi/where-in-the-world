@@ -6,6 +6,7 @@ export const StyledSelectWrapper = styled.div`
   display: flex;
   flex-flow: column;
   position: relative;
+  width: 100%;
 `;
 
 export const StyledSelectTrigger = styled.button`

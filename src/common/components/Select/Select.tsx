@@ -15,17 +15,19 @@ import { SelectOption } from '@/common/components/Select/types';
 import { StyledSelectWrapper } from './styled';
 
 type SelectProps = {
+  value: string | null;
   options: SelectOption[];
   onSelect: (option: SelectOption) => void;
 };
 
-export const Select: FC<SelectProps> = ({ options, onSelect }) => {
+export const Select: FC<SelectProps> = ({ value, options, onSelect }) => {
   const contextInitValue = useMemo(
     () => ({
       onSelect,
       options,
+      value,
     }),
-    [options, onSelect],
+    [options, onSelect, value],
   );
 
   return (
