@@ -3,14 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const StyledCountryList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  align-items: baseline;
   display: flex;
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.x12};
-  width: 100%;
   justify-content: start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 `;
 
 export const StyledCountryListItem = styled.li`

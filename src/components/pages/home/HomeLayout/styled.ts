@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHomeLayout = styled.section`
+  align-items: start;
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.x12};
   grid-template-columns: 1fr;

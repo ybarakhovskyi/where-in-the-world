@@ -8,6 +8,7 @@ import { CountryList } from '@/components/pages/home/CountryList';
 
 // Types
 import { Country } from '@/types/country';
+import { SearchProvider } from '@/components/pages/home/providers/SearchProvider';
 
 export default async function Home() {
   let countries: Country[];
@@ -27,8 +28,10 @@ export default async function Home() {
   }
 
   return (
-    <HomeLayout>
-      <CountryList countries={countries} />
-    </HomeLayout>
+    <SearchProvider countries={countries}>
+      <HomeLayout>
+        <CountryList />
+      </HomeLayout>
+    </SearchProvider>
   );
 }
