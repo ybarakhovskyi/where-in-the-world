@@ -1,5 +1,12 @@
 // Vendors
-import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
+import {
+  FC,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 // Modules
 import { SelectContext } from './selectContext';
@@ -9,6 +16,7 @@ import { SelectContextType, SelectOption } from '../types';
 
 type SelectContextProviderProps = PropsWithChildren<{
   initialValue: {
+    value: string | null;
     options: SelectOption[];
     onSelect: (option: SelectOption) => void;
   };
@@ -43,6 +51,12 @@ export const SelectContextProvider: FC<SelectContextProviderProps> = ({
     }),
     [isOpen, selectedOption, options],
   );
+
+  useEffect(() => {
+    setSelectedOption(
+      options.find((option) => option.value === initialValue.value) || null,
+    );
+  }, [options, initialValue.value]);
 
   return (
     <SelectContext.Provider value={contextValue}>

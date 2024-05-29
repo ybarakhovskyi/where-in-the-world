@@ -1,6 +1,10 @@
 // Vendors
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useContext } from 'react';
 
+// Modules
+import { regionOptionsMock } from '@/core/dataMocks/regionsMock';
+
+import { SearchAndFilterContext } from '@/components/pages/home/providers/searchContext';
 // Components
 import { Select } from '@/common/components/Select';
 
@@ -8,24 +12,47 @@ import { Select } from '@/common/components/Select';
 import { SelectOption } from '@/common/components/Select/types';
 
 // Styles
-import { StyledRegionFilterWrapper } from './styled';
-
-const regionOptionsMock = [
-  { label: 'Africa', value: 'africa' },
-  { label: 'America', value: 'America' },
-  { label: 'Asia', value: 'Asia' },
-  { label: 'Europe', value: 'Europe' },
-  { label: 'Oceania', value: 'Oceania' },
-];
+import {
+  StyledClearButtonWrapper,
+  StyledRegionFilterWrapper,
+  StyledSelectWrapper,
+} from './styled';
+import { Button } from '@/common/components/Button';
+import { Icon } from '@/common/components/Icon';
+import { FaXmark } from 'react-icons/fa6';
+import { ButtonSize } from '@/common/components/Button/types';
 
 export const RegionFilter: FC = () => {
+  const { filterValue, setFilterValue } = useContext(SearchAndFilterContext);
+
   const handleOnSelect = useCallback((option: SelectOption) => {
-    console.log(option);
+    setFilterValue(option.value);
+  }, []);
+
+  const handleOnClearButtonClick = useCallback(() => {
+    setFilterValue(null);
   }, []);
 
   return (
     <StyledRegionFilterWrapper>
-      <Select options={regionOptionsMock} onSelect={handleOnSelect} />
+      <StyledClearButtonWrapper>
+        {filterValue && (
+          <Button
+            label=""
+            icon={<Icon icon={FaXmark} />}
+            onClick={handleOnClearButtonClick}
+            size={ButtonSize.SMALL}
+          />
+        )}
+      </StyledClearButtonWrapper>
+
+      <StyledSelectWrapper>
+        <Select
+          value={filterValue}
+          options={regionOptionsMock}
+          onSelect={handleOnSelect}
+        />
+      </StyledSelectWrapper>
     </StyledRegionFilterWrapper>
   );
 };
