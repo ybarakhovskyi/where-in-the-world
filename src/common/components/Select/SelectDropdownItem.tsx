@@ -20,7 +20,7 @@ export const SelectDropdownItem: FC<SelectDropdownItemProps> = ({
 
   return (
     <li key={option.value}>
-      <StyledSelectDropdownItem onClick={handleOnClick}>
+      <StyledSelectDropdownItem onClick={handleOnClick} aria-label={option.label}>
         {option.label}
       </StyledSelectDropdownItem>
     </li>

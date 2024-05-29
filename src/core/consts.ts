@@ -1,1 +1,1 @@
-export const MAIN_PAGE_TITLE = 'Home Page';
+export const MAIN_PAGE_TITLE = 'Where in the world';

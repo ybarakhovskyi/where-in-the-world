@@ -7,6 +7,8 @@ import { CountryListItem } from '@/components/pages/home/CountryList/CountryList
 import { StyledCountryList } from '@/components/pages/home/CountryList/styled';
 import { SearchAndFilterContext } from '@/components/pages/home/providers/searchContext';
 
+export const CountryListTestId = 'country-list';
+
 export const CountryList: FC = () => {
   const { countries } = useContext(SearchAndFilterContext);
 
@@ -17,10 +19,10 @@ export const CountryList: FC = () => {
   }
 
   return (
-    <StyledCountryList>
-      {countries.map((country) => (
+    <StyledCountryList data-testid={CountryListTestId}>
+      {countries.map((country, index) => (
         <CountryListItem
-          key={`${country.cca3}_${country.ccn3}`}
+          key={`${country.cca3}_${country.ccn3}_${index}`}
           country={country}
         />
       ))}

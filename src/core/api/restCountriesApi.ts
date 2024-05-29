@@ -45,8 +45,6 @@ const createRequestUrl = ({
 
   const finalquery = `${urlWithSearchValue}${alreadyHaveQuery ? '&' : '?'}fields=${filteredFields.join(',')}`;
 
-  console.log('Ybarakhovskyi DEBUG:', finalquery);
-
   return finalquery;
 };
 

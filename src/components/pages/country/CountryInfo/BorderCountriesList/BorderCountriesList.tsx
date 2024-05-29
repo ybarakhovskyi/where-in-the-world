@@ -10,6 +10,8 @@ export type BorderCountriesListProps = {
   borderCountries: Country[] | string[];
 };
 
+export const borderCountriesListLabel = 'Border countries';
+
 export const BorderCountriesList: FC<BorderCountriesListProps> = ({
   borderCountries,
 }) => {
@@ -22,7 +24,7 @@ export const BorderCountriesList: FC<BorderCountriesListProps> = ({
       {!hasNoBorderCountries ? (
         <span>No border countries</span>
       ) : (
-        <StyledBorderCountriesList>
+        <StyledBorderCountriesList aria-label={borderCountriesListLabel}>
           {borderCountries.map((value) => {
             let countryName: string;
 
