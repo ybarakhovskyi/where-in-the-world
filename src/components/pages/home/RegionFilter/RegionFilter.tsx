@@ -13,11 +13,10 @@ import { SelectOption } from '@/common/components/Select/types';
 
 // Styles
 import {
-  StyledClearButtonWrapper,
+  StyledClearButton,
   StyledRegionFilterWrapper,
   StyledSelectWrapper,
 } from './styled';
-import { Button } from '@/common/components/Button';
 import { Icon } from '@/common/components/Icon';
 import { FaXmark } from 'react-icons/fa6';
 import { ButtonSize } from '@/common/components/Button/types';
@@ -25,26 +24,27 @@ import { ButtonSize } from '@/common/components/Button/types';
 export const RegionFilter: FC = () => {
   const { filterValue, setFilterValue } = useContext(SearchAndFilterContext);
 
-  const handleOnSelect = useCallback((option: SelectOption) => {
-    setFilterValue(option.value);
-  }, []);
+  const handleOnSelect = useCallback(
+    (option: SelectOption) => {
+      setFilterValue(option.value);
+    },
+    [setFilterValue],
+  );
 
   const handleOnClearButtonClick = useCallback(() => {
     setFilterValue(null);
-  }, []);
+  }, [setFilterValue]);
 
   return (
     <StyledRegionFilterWrapper>
-      <StyledClearButtonWrapper>
-        {filterValue && (
-          <Button
-            label=""
-            icon={<Icon icon={FaXmark} />}
-            onClick={handleOnClearButtonClick}
-            size={ButtonSize.SMALL}
-          />
-        )}
-      </StyledClearButtonWrapper>
+      {filterValue && (
+        <StyledClearButton
+          label=""
+          icon={<Icon icon={FaXmark} />}
+          onClick={handleOnClearButtonClick}
+          size={ButtonSize.SMALL}
+        />
+      )}
 
       <StyledSelectWrapper>
         <Select
