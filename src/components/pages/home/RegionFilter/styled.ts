@@ -1,21 +1,25 @@
 import styled from 'styled-components';
+import { Button } from '@/common/components/Button';
+import { mediaQueries } from '@/core/themes/default/breakpoints';
 
 export const StyledRegionFilterWrapper = styled.div`
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-gap: ${({ theme }) => theme.spacing.x4};
+  gap: ${({ theme }) => theme.spacing.x4};
   flex: 1;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 200px;
-  grid-template-areas: 'clear-button select';
+  justify-content: flex-end;
+
+  ${mediaQueries.tabletLandscape} {
+    flex-flow: row-reverse;
+  }
 `;
 
-export const StyledClearButtonWrapper = styled.div`
-  grid-area: clear-button;
-  justify-self: end;
+export const StyledClearButton = styled(Button)`
+  padding: ${({ theme }) => theme.spacing.x2};
+  border-radius: ${({ theme }) => theme.borderRadius.x2};
 `;
 
 export const StyledSelectWrapper = styled.div`
   display: flex;
-  grid-area: select;
+  flex-basis: 200px;
 `;

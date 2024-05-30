@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const StyledCountryList = styled.ul`
-  align-items: baseline;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
   gap: ${({ theme }) => theme.spacing.x12};
   justify-content: start;
   list-style: none;
@@ -15,9 +14,9 @@ export const StyledCountryList = styled.ul`
 `;
 
 export const StyledCountryListItem = styled.li`
+  display: flex;
   background-color: ${({ theme }) => theme.colors.background.secondary};
   border-radius: ${({ theme }) => theme.borderRadius.x2};
-  max-width: calc(25% - ${({ theme }) => theme.spacing.x9});
   width: 100%;
   min-width: 225px;
   overflow: hidden;
@@ -26,20 +25,25 @@ export const StyledCountryListItem = styled.li`
 
 export const StyledCountryLink = styled(Link)`
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
+  grid-template-areas: 'flag' 'info';
   color: ${({ theme }) => theme.colors.typography.common};
   text-decoration: none;
   width: 100%;
 `;
 
-export const StyledCountryFlag = styled(Image)`
-  width: 100%;
-  height: auto;
+export const StyledCountryFlagWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    grid-area: flag;
+    max-height: 150px;
+    overflow: hidden;
 `;
 
 export const StyledCountryInfo = styled.div`
   padding: ${({ theme }) => theme.spacing.x6};
+  grid-area: info;
 
   & h3 {
     margin: 0 0 ${({ theme }) => theme.spacing.x4};

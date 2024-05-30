@@ -1,13 +1,14 @@
 // Vendors
 import { FC } from 'react';
+import Image from 'next/image';
 
 // Types
-import { Country } from '@/types/country';
 
+import { Country } from '@/types/country';
 // Styles
 import {
   StyledCountryDescription,
-  StyledCountryFlag,
+  StyledCountryFlagWrapper,
   StyledCountryInfo,
   StyledCountryLink,
   StyledCountryListItem,
@@ -22,13 +23,15 @@ export const CountryListItem: FC<CountryListItemProps> = ({ country }) => {
   return (
     <StyledCountryListItem>
       <StyledCountryLink href={`/${country.name.common}`}>
-        <StyledCountryFlag
-          src={country.flags.svg}
-          alt={country.flags.alt || `${country.name.common} flag`}
-          width={225}
-          height={150}
-          priority
-        />
+        <StyledCountryFlagWrapper>
+          <Image
+            src={country.flags.svg}
+            alt={country.flags.alt || `${country.name.common} flag`}
+            width={225}
+            height={150}
+            priority
+          />
+        </StyledCountryFlagWrapper>
 
         <StyledCountryInfo>
           <h3>{country.name.common}</h3>
